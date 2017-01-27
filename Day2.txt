@@ -1,0 +1,41 @@
+Search Algorithm
+---------------
+
+General-search (problem, strategy)
+  Initialize the search tree with the initial state of problem
+  loop
+    If there are no candidate states to explore next return failure
+    choose a leaf node of the tree to expand next according to strategy
+    if the node satisfies the goal condition return the solution
+    expand the node and add all of its successors to the tree
+  end loop
+
+Properties of search methods
+  Completeness
+    Will a solution actually be found
+  Optimality
+    Does it optimize the goal for the solution?
+    (E.g. shortest distance)
+  Space and time complexity
+    Time to compute?
+    Memory?
+  Complexity is measured in terms of the following tree parameters:
+    b -- maximum branching factor
+    d -- depth of the optimal solution
+    m -- maximum depth of the state space
+
+  Uniformed Strategies
+    Use only the information available in the problem definition
+      -Breadth-first search (BFS) (TODO: implement)
+      -Depth-first search (DFS)
+      -Depth-limited search
+      -Iterative deepening algorithm
+      -Bi-directional search
+      -Uniform-cost search
+  Informed strategies
+    Use problem-specific knowledge
+    beyond the information available
+    in the problem definition to import the search performance
+
+    -Greedy search
+    -A* search
