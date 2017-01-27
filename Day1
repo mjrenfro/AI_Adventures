@@ -1,0 +1,37 @@
+********************************
+Solving Problems Using Search
+--------------------------------
+
+
+Several possible solutions ==> search
+
+Examples:
+
+ Traveler Problem
+ ================
+  Optimize: Find the minimum length between two points
+
+Definitions:
+  Search space:
+    The set of objects among which are searched for the solution
+  Goal Condition:
+    Condition to weed out solutions in the possible search space
+
+Efficiency of search:
+  The search space and its size
+  Method used to explore (traverse) the search space
+  Condition to test the satisfaction of the search objective
+  (what it takes to determine the target solution)
+
+Graph Search Problem
+  -States
+    Game positions, locations on the that are represented by nodes in the
+    graph
+  -Operators
+    Valid moves
+  -Initial State
+    Start position, start city
+  -Goal state
+    Target position (positions), target city (cities)
+  -Type of the problem
+  -Possible solution cost
