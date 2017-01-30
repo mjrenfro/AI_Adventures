@@ -1,0 +1,67 @@
+Uniformed Search
+
+Breadth-first search
+  -Complete
+    Yes if b is finite
+  -Optimal
+    No- BFS only takes into account the depth of the node, but not the path
+    cost
+    Yes- if the path cost is a nondecreasing function of the node depth
+      -The most common case is that all paths have the same cost
+  -Time
+    1+b+b^2+b^3+...+b^d =O(b^d)
+  -Space?
+    O(b^d) - keeps every node in memory
+Depth-first search
+  -Complete
+    No, if depth is infinite
+  -Optimal
+    No- returns the first solution it find
+  -Time
+    Worst case: O(b^m) --exponential in the maximum depth m!
+      -Terrible if m is much larger than d, where m is the maximum depth
+      of any node and d is the shallowest solution
+  -Space?
+    O(b*m)
+
+  Depth-limited depth-first search
+    -Eliminates infinite depth-first exploration
+    -As indicated by name of search, a limit is placed to the depth
+
+    -No the time complexity and space complexity depend on the
+    limit rather than the deepest possible depth
+
+    -Time complexity: O(b^l)
+    -Space complexity: O(b*l)
+
+    -This begs the question as what should the appropriate limit be
+
+
+
+  Iterative deepening algorithm (IDA)
+    -Tries to resolve the difficulty of not knowing the limit of the
+    depth apriori
+    -Heuristically increase the depth of the potential tree
+    -Not that memory inefficient because most of the nodes are at the
+    bottom level; therefore, repeatedly generating the top level nodes
+    multiple times doesn't matter too much
+
+  Properties:
+    Complete?
+      Yes
+    Optimal?
+      No-in general
+      Yes-if all step costs are the same
+    Time?
+      Worst Case: O(b^d)
+    Space?
+      O(bd) --wat is this?? Linear space, woah!!
+
+  Elimination of State Repeats
+    Is it necessary to keep and expand all copies of states in the search
+    tree?
+  2 Possible Cases:
+    A: Cyclic state repeats
+    B: Non-cyclic state repeats
+  If a state is repeated twice in a solution, then the solution is
+  NOT optimal
