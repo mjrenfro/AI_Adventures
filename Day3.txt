@@ -41,7 +41,7 @@ Depth-first search
   Iterative deepening algorithm (IDA)
     -Tries to resolve the difficulty of not knowing the limit of the
     depth apriori
-    -Heuristically increase the depth of the potential tree
+    -Takes one step further down and see if there's a solution
     -Not that memory inefficient because most of the nodes are at the
     bottom level; therefore, repeatedly generating the top level nodes
     multiple times doesn't matter too much
@@ -63,5 +63,13 @@ Depth-first search
   2 Possible Cases:
     A: Cyclic state repeats
     B: Non-cyclic state repeats
+      -Which ever state repeat is closer to the initial state is
+      preferred
+      -Easy for breath-first
+      -Difficult for depth-first
+        -Must use a hash table to and mark
+        Nodes that have been discovered and their length to the root
+
+
   If a state is repeated twice in a solution, then the solution is
   NOT optimal

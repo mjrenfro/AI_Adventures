@@ -1,0 +1,56 @@
+Uniformed Search Continued
+
+Tree Search
+  -Initialize the frontier using the starting state
+  -While the frontier is not empty
+    -Choose a frontier node to expand according to search
+    strategy
+    -If the node contains the goal state, return solution
+    -Else expand the node and add its children to the solution
+
+Graph Search (Basically Tree search with hash table lookup)
+  To handle repeated states:
+    -Keep an explored set; add each node to the explored set every
+    time you expand it
+    -Every time you add a node to the frontier, check whether it
+    already exists in the frontier with a higher path cost, and if
+    yes, replace that node with the new one.
+
+Uniform-cost search  *special case of the evaluation-function driven search
+   -The goal test is performed when the node is selected for expansion
+    rather than when it is first generated
+    -A test is added in case a better path is found to a node currently
+    on the frontier
+    Properties
+      -Complete?
+        Yes-if step cost is greater than some positive constant
+      -Optimal?
+        Yes-nodes expanded in increasing order of path cost
+      -Time
+        O(b^(1+C/e))
+        b=branching factor
+        e= minimum cost of every action
+        C=cost of optimal solution
+      -Space
+        O(b^(1+C/e))
+
+Best-first search
+  -Incorporates a heuristic function, h(n), into the evaluation function
+  f(n) to guide the search
+  Example: using straight lines to approximate distances between cities
+
+Greedy Search
+  Does only what is immediately best in the current decision
+  Properties
+    Complete?
+      No-stuck in loop
+    Optimal?
+      No
+    Time?
+      Worst Case O(b^m)
+    Space?
+      Worst Case O(b^m)
+Elimination of All State Redundancies
+  -General Strategy
+    Redundant node=node that appears in the tree with exactly
+    the same state and a shorted path from the initial state
