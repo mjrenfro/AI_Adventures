@@ -1,0 +1,59 @@
+----------------------
+Informed Search Methods
+----------------------
+
+Incorporate more than the problem definition like the chance or potential
+for a specific goal to be reached.
+
+A heuristic measures the potential for a node to reach a goal
+
+  Usually a heuristic is denoted by h(n)
+
+Evaluation - function driven search
+------------------------------------
+
+-A Search strategy can be defined in terms of a node evaluation
+function
+ f(n)
+ Find how much the a given node should be expanded
+(High=good)
+
+A* Search
+----------
+-uses the evaluation function to determine total cost of node n to
+the goal
+  f(n)=g(n) +h(n)
+
+  g(n) cost so far to reach n (path cost)
+  h(n) estimated cost from n to goal (heuristic)
+
+Why are heuristics good if they only provide guesses?
+  -If only a uniform cost search where used without a heuristic
+  then nodes that are opposite of the goal but >= dist of another node
+  would still be explored. Basically, prevents a search algorithm
+  from exploring node A in the illustration below
+
+    A             O             B           GOAL
+
+  This makes the search algorithm more focused on finding the optimal
+  path
+
+Properties
+-
+  Complete?
+    Yes, unless there are infinitely many nodes f< f(G) (start to node cost
+    less than the goal node's cost)
+  Optimal?
+    Yes -it cannot expand f(i+1) and fi is finished
+  Time?
+    Exponential-Number of nodes for which f(n)<=C* (relative error
+    in h x the length of solution)
+  Space?
+    Exponential-keeps all nodes in memory
+
+Weighted A* Search
+------------------
+  -Inflate an admissible heuristic by multiplying a > 1 and then
+  performing A* search
+  -Fewer nodes will be expanded, but the resulting solution may be
+  suboptimal
