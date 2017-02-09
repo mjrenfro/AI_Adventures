@@ -12,7 +12,7 @@ General-search (problem, strategy)
 
 Properties of search methods
   Completeness
-    Will a solution actually be found
+    Will a solution expectedly be found
   Optimality
     Does it optimize the goal for the solution?
     (E.g. shortest distance)
