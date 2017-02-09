@@ -64,7 +64,7 @@ Local Beam Search
   the complete list and repeat
 
 Genetic Search
---------------
+---------------
   -Initial population
   -Fitness function
   -Selection
