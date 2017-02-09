@@ -1,8 +1,0 @@
-#!/usr/bin/python3.5
-
-import sys
-import graph_read_test
-
-if __name__ =='__main__':
-  #testing
-  unittest.main()
