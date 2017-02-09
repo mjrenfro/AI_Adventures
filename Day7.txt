@@ -1,0 +1,72 @@
+Local Search Part II
+-------------------------
+
+Beyond Classic search
+  -Too much memory being used!
+
+If only finding the goal matters (not necessarily the path), then local search
+algorithms can be used
+
+Stores only the current node
+Moves only to neighbors of that node
+Typically the paths followed by the search are not retained
+
+Hill climbing often get stuck for the following reasons:
+  local maxima
+  plateaux --flat local maxima, shoulder
+  Ridge
+
+Solutions
+  1. Sideways move for hill-climbing algorithm
+  2. Stochastic hill climbing: Chooses at random from among the uphill moves
+  3. First-choice hill climbing: implements stochastic hill climbing by
+  generating successors randomly until one is generated than the current state
+  4. Random-restart hill climbing: it conducts a series of hill-climbing searches
+  from randomly generated initial states, until a goal is found
+
+
+
+Hill-climbing search (greedy)
+  Complete/optimal
+    No -- can get in local optima
+
+Simulated Annealing
+  -An alternative solution to the local optima problem
+  -Permits "bad" moves to states with a lower value--avoids being
+  stuck in local optima!
+
+Examples:
+  -ping-pong ball
+  -cooling metal
+
+pseudocode:
+  -Initialize current to starting state
+  -For i = 1 to infinity
+    -If T(i)=0 return current
+    -Let next = random successor of current
+    -Let delta=value(next) - value(current)
+    -if delta > 0 then let current=next
+    -Else let current = next with probability exp(delta/T(i))
+
+Effect of temperature
+
+The probability decreases as the "temperature" T goes down
+
+-"Bad" moves are more likely to be allowed at the start when T is high,
+-And they become more unlikely as T decreases
+
+Local Beam Search
+-----------------
+  -Start with k randomly generated states
+  -At each iteration, all the successors of all k states
+  are generated
+  -If any one is a goal state, stop. Otherwise select the k best successors from
+  the complete list and repeat
+
+Genetic Search
+--------------
+  -Initial population
+  -Fitness function
+  -Selection
+  -Crossover
+  -Mutation
