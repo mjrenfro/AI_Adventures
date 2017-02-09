@@ -2,7 +2,6 @@
 
 from heapq import *
 import itertools
-from collections import defaultdict
 
 class Frontier:
     def __init__(self, start, goal):
@@ -21,8 +20,6 @@ class Frontier:
         entry=[priority, count, task]
         self.entry_finder[task]=entry
         heappush(self.pq, entry)
-
-
 
     def remove_task(self,task):
         'Mark an existing task as REMOVED. Raise KeyError if not found.'

@@ -1,13 +1,8 @@
 #reading in file and populating graph
 import sys
 from collections import defaultdict #for the graph
-import json #for printing
 from frontier import Frontier #for uniform_cost_search frontier
 import unittest #for testing
-import collections
-from queue import PriorityQueue
-
-DEBUG=True
 
 def explore(graph,frontier):
     #hack way to ensure the first pop is treated like a tuple of tuples, cause why classes?
@@ -36,7 +31,6 @@ def print_path(path,cost):
         return
     print("\ndistance: ",cost, "km")
     print("route: ")
-    #Allows pop to be used
 
     path=list(path)
     prev=path.pop(0)
@@ -70,7 +64,7 @@ def readin():
 
 class TestUCS(unittest.TestCase):
     def test_results(self):
-        sys.argv=['something', 'input1.txt', 'London', 'Frankfurt']
+        sys.argv=['something', 'input1.txt', 'Luebeck', 'Stuttgart']
         graph, start, end=readin()
         f=Frontier(start, end)
         path,cost = explore(graph, f)
