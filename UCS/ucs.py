@@ -1,4 +1,6 @@
-#reading in file and populating graph
+'''Implements Uniform-Cost Search to report the optimal length
+and the distance between each node in the solution path'''
+
 import sys
 from collections import defaultdict #for the graph
 from frontier import Frontier #for uniform_cost_search frontier
@@ -37,8 +39,7 @@ def print_path(path,cost):
 
     while path:
         curr=path.pop(0)
-        #TODO: Figure out how to do this correctly with string formatting
-        print(prev[0]+" to "+curr[0]+", "+str(curr[1])+ " km")
+        print("{a} to {b}, {dist} km".format(a=prev[0],b=curr[0], dist=str(curr[1])))
         prev=curr
 
 #reads in all variables for the search and returns them
