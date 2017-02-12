@@ -1,0 +1,107 @@
+------------------
+Adversarial Search
+------------------
+
+What is a game?
+  -Agents' goals are in conflict => adversarial search
+  -"Unpredictable" opponent => solutions must be recalculated depending
+  on the opponent's moves
+  -Time limits => have to approximate
+
+Mathematical game theory
+  Game= any multi-agent environment, provided that the impact of each agent on
+  the others is "significant", regardless of whether the agents are cooperative
+  or competitive
+
+AI Games
+  -Common are zero-sum (aka constant-sum), perfect information (deterministic)
+
+Formalization of a Game
+  -S0= the initial state
+  -Player(s) = Define which player has the move in a state
+  -Action(s) = returns the set of legal moves/actions in a state
+  -Result(s,a) = the transition model, which defines the result of a move
+  -Terminal-test(s) = a terminal test, which is true when the game is over
+  -Utility(s,p) = defines the final points for the players that ends in
+  state s for a given player p
+
+Theoretics:
+  Say there are two players MIN and MAX
+
+  -Minimax value= value of node that represents the utility (for MAX) of being
+  in the corresponding state, assuming perfect play on both sides.
+  -Minimax strategy = Choose the move that gives the best worse-case payoff
+
+Computing the minimax value of a state
+  Minimax(state)=
+    -Utility(state) if state is terminal
+    -max Minimax(successor(state)) if player = MAX
+    -min Minimax(successors(state)) if player = MIN
+
+Minimax algorithm
+
+  function Minimax-Decision (state) returns an action
+    inputs: state, current state in game
+    return the a in Actions(state) maximizing Min-Value(Result(a, state))
+
+  function Max-Value(State) returns a utility value
+    if terminal-test(state) then return utility (state)
+    v <- -infinity
+    for a,s in successors(state) do v <- Max(v, Min-Value(s))
+    return v
+
+  function Min-Value(state) returns a utility value
+    if terminal-test(state) then return Utility(state)
+    v <- infinity
+    for a, s in Successors(state) do v <- Min(v, Max-Value(s))
+    return v
+
+Minimax Algorithm Specs
+-----------------------
+
+Complete?
+  -Yes, if tree is finite(chess has specific rules for this.)
+
+Optimal?
+  -Yes, against an optimal opponent. Otherwise?
+
+Time complexity?
+  -O(b^m)
+
+Space complexity?
+  -O(bm) depth-first exploration
+
+Why is it called Alpha-Beta?
+  Alpha-the value of the best choice for the MAX player
+  found so far at any choice point above n
+
+  We want to compute the MIN-value at n.
+
+  As we loop over n's children, the MIN-value decreases
+
+  If it drops below alpha, MAX will never take this branch so we can
+  ignore n's remaining children
+
+  Analogously, B is the value of the lowest-utility choice found so far for the MIN
+  player
+
+Alpha-Beta Algorithm (from Wikipedia)
+ function alphabeta(node, depth, α, β, maximizingPlayer)
+      if depth = 0 or node is a terminal node
+          return the heuristic value of node
+      if maximizingPlayer
+          v := -∞
+          for each child of node
+              v := max(v, alphabeta(child, depth – 1, α, β, FALSE))
+              α := max(α, v)
+              if β ≤ α
+                  break (* β cut-off *)
+          return v
+      else
+          v := ∞
+          for each child of node
+              v := min(v, alphabeta(child, depth – 1, α, β, TRUE))
+              β := min(β, v)
+              if β ≤ α
+                  break (* α cut-off *)
+          return v
