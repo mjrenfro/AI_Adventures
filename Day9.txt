@@ -1,0 +1,92 @@
+---------------------
+Game with Uncertainty
+---------------------
+
+Alpha-Beta Pruning Properties
+  -pruning probably does not affect final result
+  -Amount of pruning depends on move ordering
+    -Reduces down the time to find the best move to
+    O(b^(m/2)) from O(b^m)
+
+Imperfect real-time decision
+  Despite the advantage of alpha-beta pruning, MINIMAX algorithm
+  implements the incomplete search method depth-first
+
+Advantageous to limit depth (add quiescence search)
+
+  Cutting Off Search
+    A simple strategy is to set a predefined maximum search depth, d
+    such that the evaluation function is then Cutoff-Test(s, depth)
+
+    Could miss that the next play is essential to determining the
+    winners of the game (unstable state)
+
+  Horizon Effect
+    May incorrectly estimate the value of a state by overlooking an event
+    that is just beyond the depth limit.
+      For example, a damaging move by the opponent that can be delayed
+      but not avoided
+
+Types of Search to Prevent the Horizon Effect:
+  -Quiescence search: do not cut off search at positions that are
+  unstable
+  -Singular Extension: a "powerful" move that should be attempted even
+  after the normal depth limit is reached
+
+Additional Techniques
+  Transposition table: structure to store previously expanded states
+  Forward pruning: Avoids considering all possible moves
+  Lookup tables: opens moves and endgames
+
+
+Use eval instead of Utility
+
+  -an evaluation function returns an estimate of the expected
+  utility of the game from a given position
+
+  Eval functions may be learned from game databases using Monte Carlo
+  simulations or by having the program play many games against itself
+
+  Evalution function
+    mathematically, a common evaluation function is a weighted sum of
+    features
+
+Game of Chance
+--------------
+-Stochastic games
+
+  Nondeterministic games in general
+  ---------------------------------
+
+  Expectiminimax(s) = sum (P(r)) expectiminimax(results(s,r))
+
+  Algorithm for nondeterministic games
+    -Must add another addition logic for chance nodes
+      if state is a Max node then
+        return the highest Expectiminimax-value of Successors(state)
+      if state is a Min node then
+        return the lowest ExpectiMinimax-value of successors(state)
+      <<<-----New Condition Here ----->>>
+      if state is a chance node then
+        return average of Expectiminimax-value of successors(state)
+
+Backgammon Example
+------------------
+  Expectiminimax: for chance nodes, average values weighted by the probability
+  of each outcome
+
+  Monte Carlo Simulation: Must simulate a large number of games with the
+  stochastic component (whether that be the roll of dice or some other
+  random feature) and the percentages of win as the evaluation function
+
+
+
+
+
+
+
+
+
+Terminology
+-----------
+  ply-refers to one turn taken by one of the players.
