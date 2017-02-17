@@ -1,5 +1,5 @@
 '''Implements Uniform-Cost Search to report the optimal length
-and the distance between each node in the solution path'''
+and the distance between each node in the solution path using Python 3.5'''
 
 import sys
 from collections import defaultdict #for the graph
