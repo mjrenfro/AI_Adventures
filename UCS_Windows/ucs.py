@@ -27,11 +27,11 @@ def explore(graph,frontier):
 
 def print_path(path,cost):
     if path ==None:
-        print("\ndistance: ",cost)
+        print('\r\ndistance: ' + cost)
         print("route: ")
         print ("none")
         return
-    print("\ndistance: ",cost, "km")
+    print('\r\ndistance: ' +str(cost) +" km")
     print("route: ")
 
     path=list(path)
