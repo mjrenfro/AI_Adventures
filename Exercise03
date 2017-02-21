@@ -1,0 +1,106 @@
+Extreme temperatures of simulated annealing
+
+Optimization Algorithm
+
+Starts by initially generating an initial solution and then
+exploring the neighboring "area" (By changing the parameters like in
+machine learning?)
+
+But how does the algorithm know that a better solution exists
+when it find the best in the neighborhood (like you might have
+found the best pizza join in the city, but how do you know if there's
+a better one in the whole world?)
+
+Simulated Annealing=method of solving unconstrained and bound-constrained
+optimization problems
+
+Heating a material and then slowly lowering the temperature to decrease defects
+and thus minimizing the system energy.
+
+The Basic Algorithm
+-------------------
+
+1. First, generate a random solution
+2. Calculate its cost using some function you've defined
+3. Generate another random solution in the first solution's neighborhood
+4. Calculate the new solution's cost
+5. Compare them:
+  Absolutely move to the next solution if the new cost is less
+  than the old cost
+  However, only maybe move to the next solution if the next cost is
+  greater than the old cost
+    Accepting the new solution in this case depends on the
+    acceptance probability function. Once the acceptance probability
+    is calculated, it's compared to a randomly-generated number between
+    0 and 1. If the acceptance probability is larger than the random number
+    , a switch will happen.
+
+    acceptance probability equation:
+      a=e^(c_new-c_old)/T
+
+6. Repeat until an acceptable solution (?) is found or a maximum # of
+iterations is reached. After every increase in iteration a constant
+factor is decreased by multiplying by alpha.
+
+
+Question 1: Extreme Temperatures of Simulated Annealing
+
+Local Search Algorithms
+------------------------
+  Hill-climbing (greedy)
+
+    -Next=highest-valued successor of current
+    -If value (next) < value (current) return current
+    -Else let current=next
+    What is the terminating condition?
+    # of iterations?
+
+  Sideways move for hill climbing algorithm
+    -
+  First-choice hill climbing
+    -performs stochastic hill climbing by generating
+     successors randomly until one is generated that is
+     better than the current state
+
+
+  Stochastic Hill Climbing
+    -Chooses at random from among the uphill moves
+
+  Random-restart hill climbing
+    Conducts a series of hill-climbing searches for randomly generated
+    initial states, until a goal is found
+    Trivially complete
+
+  Simulated Annealing
+    Initialize current to starting state
+    For i =1 to infiinity
+      If T(i) = 0 return current
+      Let next=random successor of current
+      Let delta =value(next)-value(current)
+      If delta>0 then let current = next
+      Else let current=next with probability exp (delta/(T(i)))
+
+1. Simulated annealing with T=0 at all times (and omitting the termination test.)
+
+    The probability of accepting the next algorithm parameters is
+    dictated by the function e^(-delta/temp)
+    *Used only if the next parameters cost more than the current ones
+
+    As temp goes to 0, the exponent goes to infinity. This means
+    the overall value of the function goes to 0.
+    If the probability of acceptance for a higher cost function
+    is 0, then the resulting behavior is identical to "First-
+    Choice Hill Climbing" because only the next algorithm is moved
+    to if it is less cost.
+
+2. Simulated annealing with T=1 at all times.
+    Substitute in T=1 into the equation
+    You get out: e^(-delta)
+    Random-walk search
+    (why??)
+
+Question 2: Special Cases of Local Beam Search
+What is Local Beam Search?
+
+
+  1. Local beam search with k=1
