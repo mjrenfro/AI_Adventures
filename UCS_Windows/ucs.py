@@ -1,5 +1,5 @@
 '''Implements Uniform-Cost Search to report the optimal length
-and the distance between each node in the solution path'''
+and the distance between each node in the solution path using Python 3.5'''
 
 import sys
 from collections import defaultdict #for the graph
@@ -27,11 +27,11 @@ def explore(graph,frontier):
 
 def print_path(path,cost):
     if path ==None:
-        print("\ndistance: ",cost)
+        print('\r\ndistance: ' + cost)
         print("route: ")
         print ("none")
         return
-    print("\ndistance: ",cost, "km")
+    print('\r\ndistance: ' +str(cost) +" km")
     print("route: ")
 
     path=list(path)
