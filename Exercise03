@@ -73,7 +73,7 @@ Local Search Algorithms
 
   Simulated Annealing
     Initialize current to starting state
-    For i =1 to infiinity
+    For i =1 to infinity
       If T(i) = 0 return current
       Let next=random successor of current
       Let delta =value(next)-value(current)
@@ -101,6 +101,26 @@ Local Search Algorithms
 
 Question 2: Special Cases of Local Beam Search
 What is Local Beam Search?
+  Initially K states are randomly generated. The successors of the
+  K states are then calculated using the objective function.
+  If any of the successors is a "goal" that is, the maximum value of
+  the objective function, then the algorithm halts.
+
+  Of the states to choose from (new and old...so 2K), only the best
+  K states are selected as new initial states.
 
 
   1. Local beam search with k=1
+Hill climbing because only the next state will be accepted if it is
+better than the current state.
+  2. Local beam search with one initial state and no limit on the number
+  of states retained.
+  Breadth-first search
+
+Question 3 Special case of genetic search
+
+1. Give the name of the algorithm that results from the following
+special cases: genetic algorithm with population size N=1 (called as
+"self mate").
+So during the Crossover phase, there's going to be no introduced variation
+in the offspring.
