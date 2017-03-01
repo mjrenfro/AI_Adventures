@@ -33,6 +33,9 @@ Theoretics:
   -Minimax strategy = Choose the move that gives the best worse-case payoff
 
 Computing the minimax value of a state
+
+Summary:  Always chose the move that will minimize the maximum damage that your opponent can do to you.
+
   Minimax(state)=
     -Utility(state) if state is terminal
     -max Minimax(successor(state)) if player = MAX
