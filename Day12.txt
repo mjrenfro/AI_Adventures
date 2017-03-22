@@ -1,0 +1,18 @@
+Knowledge Representation and Propositional Logic
+
+Knowledge - based agent
+
+  -Inference engine ---> Domain-independent algorithms
+  -Knowledge base ----> Domain-specific content
+
+  Knowledge Base (KB):
+    Knowledge (a set of sentences) that describe facts about the world in
+    some formal (representational) language
+
+    Domain Specific
+
+  Inference Engine
+    A set of procedures that use the representational language to infer new
+    facts from known ones or answer a variety of KB queries
+
+    Domain independent

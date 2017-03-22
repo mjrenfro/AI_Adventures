@@ -1,0 +1,88 @@
+Solving Constrained Satisfaction Problem (CSP)
+
+Constrained Satisfaction Problem Details
+
+  State:
+    -is defined by variables Xi with value from domain Di,
+    which is also called as an assignment of values to some or all of the
+    variables
+
+    -{Xi = vi, Xj = vj}, {Xi = vi,..., Xj=vj,...},...
+    -Consistent/legal= an assignment that does not violate any constraints
+
+  Goal test: is a set of constraints specifying allowable combinations of values
+  for subsets of variables.
+
+  Solution- is a complete, consistent assignment
+
+
+Constraint Propagation: arc consistency
+
+AC-3 algorithm to seek arc consistency
+
+Standard Search Formulation (incremental)
+
+Strategy to develop search algorithm for CSPs
+  Let's start with the straightforward, dumb approach, then fix it
+
+Incremental Search Algorithm for CSPs
+  States
+    -variables and values assigned so far
+  Initial State
+   -the empty assignment {}
+  Successor function
+    -Choose any unassigned variable and assign to it a value that does not
+    violate any constraints
+      Fail if no legal assignments
+
+  Goal test
+    -The current assignment is complete and satisfies all constraints
+
+Standard Search Formulation (incremental)
+  This is the same for all CSPs
+
+  What is the depth of any solution (assuming n variables)?
+    n-this is good!
+
+  Given that there are d possible values for any variable, how many paths are
+  there in the search tree?
+    The branching factor at top level is b= nd
+    b=(n-l)d at depth l (due to constraint "pruning")
+    Hence n! x d^n leaves (this is bad!)
+      --Factorial efficiency is typically desired to be avoided
+
+  How can we reduce the branching factor?
+
+  Backtracking search
+
+    In CSPs, variable assignments are commutative:
+      For example [WA = red then NT = green] is the same as
+      [NT = green then WA = red].
+
+    We only need to consider assignments to a single variable at each
+    level (i.e. we fix the order of assignments) => b=d
+
+    Depth-first search for CSPs with single-variable assignments is called
+    backtracking search
+
+    Backtracking search is the basic uninformed algorithm for CSPs
+
+
+  Ambiguous Parts of the Backtracking Algorithm
+    -Selecting another unassigned variable
+    -Order-domain values
+
+In terms of selecting another unassigned variable:
+  Minimum Remaining Values (MRV)
+    -Basically just choose the variable with the fewest legal values (most constrained variable)
+  Degree Heuristic
+    -choose the variable that imposes the most constraints on the remaining variables
+
+
+Now that a variable has been determine to explore...which value should be tried first?
+
+
+Given a variable, what order should its values be tried?
+        -Least constraining value
+          Given a variable, in which order should its values be tried?
+            The value that rules out the fewest values in the remaining variables.
