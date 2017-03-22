@@ -1,0 +1,155 @@
+Constrained Satisfaction Problems
+
+Each state is considered atomic
+
+Coloring the map of Australia with three colors
+
+Variables
+  -The 7 different regions
+
+Domains
+  Di={three different colors}
+
+Constraints
+  Adjacent regions must have different colors
+
+Constrained Satisfaction Problem (CSP)
+
+A constrained satisfaction problem (CSP) consists of three components
+  X is a set of variables {X1, X2, Xn}
+  D is a set of domains {D1, D2, Dn}
+  C is a set of constraints that specify allowable combinations of values
+    {C1, C2,...Cm}
+
+    Ci consists of a pair of {scope, relation}
+    Scope is a tuple of variables that participate in the constraint and
+    relation is a relation that defines the values that those variables can
+    take on
+
+    For example, if X1 and X2 both have the domain {A,B}, then the
+    constraint saying the two variables must have different values
+    can be written as
+      -an explicit list: {(X1, X2), [(A,B),(B,A)]} or as
+      -an abstract relation ((X1, X2), X1=/=X2)
+
+Constrained Satisfaction Problem
+      State is defined by variables Xi with values from Domain Di
+        -Which is also called as an assignment of values to some or all
+         of the variables
+        -E.G. {Xi =vi, Xj=vj}, {Xi=vi,...,Xj =vj,...}
+        -An assignment that does not violate any constraints is called
+        a consistent or legal assignment
+
+      Goal test= set of constraints specifying allowable combinations of
+      values for subsets of variables
+
+      Solution = complete, consistent assignment
+
+
+Why constrained satisfaction problem
+  -How does this compare to the "generic" tree search formulation
+    A more structured representation for states, expressed in a formal
+    representation language.
+    Allows useful general-purpose algorithms with more power than standard
+    search algorithms
+  -Why is search on constrained satisfaction problem faster?
+
+Example: N- Queens  problem
+  Variables: Qi
+  Domains: {1,2,...N}
+  Constraints: Every i,j place must not result in a
+  threatening Queen arrangement
+
+TODO: research this more
+Example Cryptarithmetic
+
+TWO
+TWO
+-------
+FOUR
+
+Variables:
+  T,W,O,F,U,R
+  C1, C2, C3
+
+Constraints:
+
+- O+O=R+10 x C1
+- C1+W+W=U+10 X C2
+.
+.
+.
+
+Example: Sudoku
+
+Variables: Xij
+
+Domains: {1,2,...,9}
+
+Constraints: (Alldiff (Xij in the same unit))
+
+Real-World CSPs
+
+Assignment Problems
+
+  What teaches what class
+  Timetabling problems
+    Which class is offered when and where
+
+  Hardware configuration
+  Spreadsheets
+
+Varieties of CSPs
+
+Discrete Variables
+
+  Finite domains: size d => O(d^n) complete assignments
+  Infinite domains:
+    -integers, strings, etc. job scheduling, variables are start/end days for each job
+    -need a constraint language (StartJob1 + 5 <= StartJob3)
+
+Continuous variables
+  -start/end times for Hubble Telescope observations
+  -linear constraints solvable in poly time by LP methods
+
+Varieties of Constraints
+
+  Unary constraints - involve a single variable
+
+  Binary Constraints - involve pairs of variables
+
+  Higher-Order constraints = involve 3 or more variables,
+    cryptarithmetic column constraints
+
+  Preferences (soft constraints)
+    red is better than green
+    Often representable by a cost for each variable assignment
+      constrained optimization problems
+
+Reducing Constraint Problems
+  By induction, can reduce any n-ary constraint to an (n-1)-ary constraint.
+  (Ignore unary constraint)
+
+Constraint Propagation: Inference in CSPs
+  -In regular state-space search, an algorithm can do only one thing: search
+  -In CSPs there is a choice: an algorithm can
+    -search: choose a new variable assignment from several possibilities, or
+    do a specific type of inference called constraint propagation: using the constraints
+    to reduce the number of legal values for a variable, which in turn can reduce
+    the legal values of another variable and so on.
+
+    Constraint Propagation leads to local consistency
+      Treat each variable as a node in a graph and each binary constraint as an arc,
+      then the process of enforcing local consistency in each part of the graph causes
+      inconsistent value to be eliminated throughout the graph.
+
+    Local Consistencies:
+      Node consistency
+      Arc consistency
+      Path consistency
+      K - consistency
+      Consistency over global constraints
+
+What Constraint Propagation Does?
+  -Detect unsolvable problem very quickly by reducing the sizes of variable domains
+  -Constraint propagation itself can find the solutions to some CSPs

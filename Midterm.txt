@@ -1,0 +1,79 @@
+Question 1:
+
+1 Breadth-first search is a special case of uniform-cost search
+False, uniform cost search cares about the cost between nodes while
+breadth first search about the number of nodes in between two nodes
+But if all costs edges are equal, then yes UCS will recreate BFS
+True
+
+2 Uniform-cost search is a special case of A* search
+False uniform cost search does not have a heuristic
+True it does have a heuristic, it's just =0
+
+3 Depth first search always expands at least as many nodes as A* search with an
+admissible heuristic.
+True because A* search only pursues branches that optimal while depth first search
+does not
+false
+
+4 h(n) =0 is an admissible heuristic for the 8-puzzle game
+h(n) = 0 is never going to overestimate the cost for completing a path (true)
+
+5 Breadth first search is complete even if zero step costs are allowed
+True because breadth first search does not consider the step costs
+
+6 Assume that a rook can move on a chessboard any number of squares in straight
+line, vertically or horizontally, but cannot jump over other pieces. Manhattan
+distance is an admissible heuristic for thee problem of moving the rook
+from square A to square B in smallest number of moves.
+False because a rook's moves and the manhattan distance are not the same thing
+
+Question 2:
+
+1. Given the above information, define a maximally admissible heuristic to be
+used in conjunction with A* search.
+
+A maximally admissible heuristic must not overestimate the cost to visit the
+goal node from the starting node
+
+H=distance (including navigating around the obstacles) from the current node to
+the last node.
+Actual: manhattan distance
+
+2. Suppose that A* uses an admissible heuristic h such that h(n) > 0 for at least
+one node n in the search tree.
+Are there scenarios where A* will visit fewer nodes than uniform cost search (UCS)?
+Uniform cost search only cares about the current accumulated cost. Therefore, if
+there is an obstacle on an initially execellent, low cost looking path, then UCS will
+initially pursue that path until it encounters the obstacle and which point
+the UCS will then begin pursing another another path.
+Are there scenarios where A* will visit more nodes than UCS?
+No A* should be optimal because it knows about the obstacles.
+
+Because the admissible heuristic is greater than 0 for the A* search, A* will always
+outperform the h=0 heuristic belonging to UCS.
+ Justify your answer.
+
+Question 3:
+
+Consider a search tree for which we know the following
+
+    -Each node has 0,1, or 2 children never more than 2
+    -The depth of the tree is 100
+    -There is one and only one goal node in the entire tree, and it is located at level 20
+    -The entire tree contains exactly 500 million nodes
+    -The tree contains exactly 1000 nodes with depth less than or equal to 20
+    -We define the depth of the root to be 1 (not 0)
+
+1. For each of breadth-first search (BFS), depth-first search (DFS), and iterative deepening
+search (IDS), given the information above, what is the maximum number of nodes that can be stored in
+memory at the same time (to ensure that the respective search algorithm can trace back from
+the goal node to the root node to et an action sequence as solution)?
+For this question, reasonable upper bounds that are no more than 5 times of the correct answer, will get full credit
+
+a.) BFS
+  Because breadth first search is complete, it will search through all the nodes potentially
+  (basically it won't stop until the target node on level 20 is reached)
+  All 1000 must be kept in memory because ...
+b.) DFS
+  Only the length needs to be kept in memory because 
