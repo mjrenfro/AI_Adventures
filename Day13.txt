@@ -1,0 +1,48 @@
+Inference in Propositional Logic
+
+Entailment
+  Reflects the relation of one fact in the world following from the others
+
+Inference
+  Inference is a process by which new sentences are derived from existing
+  sentences in the KB
+    The inference process is implemented on a computer
+
+    Assume an inference procedure i that derives a sentence alpha from the KB:
+    KB |- i alpha
+
+StackOverflow Wisdom
+  Soundness means that you cannot prove anything that's wrong
+  Completeness means that you can prove anything that's right
+
+Logical Inference Problem
+  Given a knowledge base KB(a set of sentences) and
+  a sentence alpha (called a theorem)
+
+Does a KB semantically entail alpha?
+  In other words: In all interpretations in which sentences in the KB are true,
+  is alpha also true?
+
+Question: Is there a procedure (program) that can decide this problem in
+a finite number of steps?
+
+Answer: Yes. Logical inference problem for the propositional logic is decidable
+
+  What are the tactics to answer a logical inference problem?
+    -Truth table
+    -Inference rules
+    -Conversion to the inverse SAT problem
+
+Truth table approach
+  1. Generate table for all possible interpretations
+  2. Check whether the sentence alpha evaluates to true whenever KB
+  evaluates to true
+
+What is the computational complexity of this truth table approach?
+
+Exponential in the number of the propositional symbols
+  2^n Rows in the table has to be filled
+
+The truth table is exponential in the number of propositional symbols
+
+This can be made more efficient
