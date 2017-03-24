@@ -16,3 +16,66 @@ Knowledge - based agent
     facts from known ones or answer a variety of KB queries
 
     Domain independent
+
+Example: MYCIN
+
+  MYCIN : an expert system for diagnosis of bacterial infections
+
+  Knowledge Base represents
+    -Facts about a specific patient case
+    -Rules describing relations between entities in bacterial infection domain
+
+  Inference engine:
+    Manipulates the facts and known relations to answer diagnostic queries
+
+
+Knowledge representation
+    Objective: express the knowledge about the world in a computer-tractable form
+
+Knowledge representation languages (KRLs)
+  Syntax: describes how sentences in KRL are formed in language
+  Semantics: describes the meaning of sentences what is it the sentence refers
+  to in the real world
+  Computational aspect: describes how sentences and objects in KRL are
+  manipulated in concordance with semantic conventions
+
+Logic is a formal language for expressing knowledge and for making logical inferences
+which is defined by
+  A set of sentences: A sentence is constructed from a set of primitives according to
+  syntactic rules
+  A set of interpretations: An interpretation I gives a semantic to primitives.
+  It associates primitives with objects or values
+
+The valuation (meaning) function V:
+  Assigns a value (typically the truth value) to a given sentence under some
+  interpretation
+
+Propositional Logic - the simplest logic
+
+  A proposition is a statement that is either true or false
+
+Semantics: Propositional symbols
+  The meaning (value) of the propositional symbol for a specific
+  interpretation is given by its interpretation
+
+I: Light in the room is on -> True. It rains outside -> False
+  V(Light in the room is on, I) = True
+  V(It rains outside, I) =False
+
+Contradiction and Tautology
+
+Composite sentences may always (under any interpretation) evaluate to a
+single truth value
+
+Contradiction (Always False)
+  P and not P
+
+Tautology (Always True)
+  P or not P
+
+Model Validity and Satisfiability
+  An interpretation is a model for a set of sentences if it assigns true
+  to each sentence in the set.
+  A sentence is satisfiable if it has a model
+    There is at least one interpretation under which the sentence can
+    evaluate to True
