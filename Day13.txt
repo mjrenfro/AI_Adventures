@@ -46,3 +46,142 @@ Exponential in the number of the propositional symbols
 The truth table is exponential in the number of propositional symbols
 
 This can be made more efficient
+
+Limitations of the Truth Table approach
+
+Problem with the truth table approach:
+  The truth table is exponential in the number of propositional
+  symbols (we checked all assignments)
+
+How to make the process more efficient?
+  Observation: KB is true only on a small subset of interpretations
+  Solution: check only entries for which KB is True
+    This is the idea behind the inference rules approach
+
+  Inference rules:
+    Represent sound inference patterns repeated in inferences
+    Can be used to generate new (sound) sentences from existing ones
+
+  Inference rules for logic
+    Modus ponens
+
+     P => Q,P
+    ---------
+        Q
+
+    If both sentences in the premise are true then conclusion is true.
+    The modus ponens inference rule is sound
+      Can be proved through a truth table
+
+    And-elimination
+      A1 ^ A2 ^ An
+     ---------------
+           Ai
+
+    And-introduction
+
+      A1, A2,  An
+     --------------
+      A1 ^ A2 ^ An
+
+    Or-Introduction
+
+              Ai
+    -----------------------
+      A1 v A2 v Ai v An
+
+    Elimination of double negation
+      --A
+    -------
+       A
+
+     Unit resolution
+
+      A v B, -A
+     ------------
+          B
+
+     Resolution
+
+      A v B, -B v C
+     ----------------
+          A v C
+
+    Logical Equivalence
+
+Logic Inferences and Search
+  Inference rule method as a search problem:
+    State: a set of sentences that are known to be true
+    Initial State: a set of sentences in the KB
+    Operators: applications of inference rules
+      Allow us to add new sound sentences to old ones
+    Goal state a theorem alpha is derived from KB
+
+  Logic Inference:
+    Proof: A sequence of sentences that are immediate consequences of
+    applied inference rules
+    Theorem proving: process of finding a proof of theorem
+
+
+The main issue with this is that the branching factor is too immense.
+
+The possible child nodes need to be restricted
+
+The child nodes can be restricted via normal forms
+  Conjunctive Normal Form (CNF)
+    Conjunction of clauses (clauses include disjunctions of literals)
+  Disjunctive Normal Form (DNF)
+    Disjunction of terms (terms include conjunction of literals)
+
+
+Satisfiability (SAT) problem
+  Determine whether a sentence in the conjunctive normal form
+  (CNF) is satisfiable (i.e. can evaluate to true).
+
+  It is an instance of a constraint satisfaction problem
+
+  Variables:
+    -Propositional symbols (P,R,T,S)
+    -Values : True, False
+  Constraints:
+    -Every conjunct must evaluate to true, at least one of the
+    literals must evaluate to true
+
+A logical inference problem can be solved as a CSP problem. Why?
+
+Resolution Rule
+
+When applied directly to KB in CNF to infer alpha:
+  Incomplete: repeated application of the resolution rule to a KB
+  in CNF may fail to derive new valid sentences
+
+A trick to make things work:
+  Proof by contradiction
+    Disproving: KB ^ -alpha
+    Proves the entailment KB |= alpha
+  Resolution rule is refutation complete
+
+Resolution Algorithm
+  Algorithm
+    Convert KB to the CNF form
+    Apply iteratively the resolution rule starting from
+      KB, -alpha (in CNF form)
+    Stop when: contradiction (empty clause is reached)
+      A, -A -> empty set
+      proves entailment
+    No more new sentences can be derived
+      disproves it
+
+Properties of inference solutions
+  Truth-table approach
+    ->Blind
+    ->Exponential in the number of variables
+  Inference rules
+    -More efficient
+    -Many inference rules to cover logic
+
+  Conversion to SAT - Resolution refutation
+    -More efficient
+    -Sentences must be converted into CNF
+    -One rule --the resolution rule -- in sufficient to perform
+    all inferences
