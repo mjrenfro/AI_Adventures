@@ -1,0 +1,70 @@
+Proof by Resolution
+
+Notes:
+  Proof by resolution
+    Algorithm works by proof by contradiction
+    Basically, to show that the knowledge base entails an query, it must
+    be shown that the knowledge base or not the query is not satisfiable.
+
+    Apply resolution to knowledge base or not query in CNF
+
+    and resolve pairs with complementary literals
+
+    and add new clauses
+      until
+        there are no new clauses are to be added
+        two clauses resolve to the empty class, which means that a contraction
+        has happened. This implies that the opposite of the predicate is true.
+
+        So...the knowledge base does imply the targeted query.
+
+Satisfiable sentence- a combination of values for the variables makes
+the sentence true
+
+Valid Sentence - all truth value assignments for the variables make the
+sentence true
+
+
+1. Determine using enumeration, whether this sentence is valid, satisfiable
+(but not valid), or unsatisfiable
+  A simple truth table has eight rows, and shows that the sentence is true for
+all models and hence valid
+
+2. Convert the left-hand and right-hand sides of the main implication in CNF, showing each
+step and explain how the results confirm your answer to (1)
+
+  (Food => Party) or (Drinks => Party) => [(Food and Drinks) => Party]
+
+  Steps to converting to negation normal form
+    1. Eliminate implications: convert x -> y to -x or y
+    2. Move NOTs inwards
+
+    //left hand side
+    (-Food or Party) or (-Drinks or Party)
+    //associativity??
+    -Food or Party or -Drinks or Party
+    -Food or -Drinks or Party
+
+    //right hand side
+    (Food and Drinks) => Party
+    -(Food and Drinks) or Party
+    //De Morgan's law
+    (-Food or -Drinks ) or Party
+    //Again associativity
+    -Food or -Drinks or Party
+
+    ...Which ultimately equals the left hand side
+
+3. Prove your answer to (1) using resolution
+  Resolution basically means that you have to prove that the negation of
+  the "query" in the KB results in a contradiction.
+
+  So, just negate the left hand side and prove that there no satisfiable
+  values to make the implication true.
+
+  -(-Food or -Drinks or Party) => [(Food and Drinks)=>Party]
+  (-Food or -Drinks or Party) or [(Food and Drinks) => Party]
+  (-Food or -Drinks or Party) or [-(Food and Drinks) or Party]
+  //De Morgan's law
+  (-Food or -Drinks or Party) and -[-(Food and Drinks) or Party]
+  -Food or -Drinks or Party and Food and Drinks and -Party
