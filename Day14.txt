@@ -1,0 +1,82 @@
+Introduction to First Order Logic
+----------------------------------
+
+Propositional logic is Not as powerful as natural human languages, such
+as English, Spanish
+
+First - Order logic (FOL)
+  Whereas propositional logic assumes world contains facts,
+  first-order logic (like natural language) assumes the world contains
+    -Objects: people, houses, numbers, games, wars
+    -Relations: red, round, bogus, prime
+    -Functions: father of, best friend of , third inning of
+
+Syntax of FOL: Basic elements
+
+  Constants
+  Predicates
+  Functions
+  Variables
+  Connectives
+  Equality
+  Quantifiers
+
+
+An atomic sentence (also called an atom) is formed from a predicate symbol
+optionally followed by a parenthesized list of terms:
+  Atomic sentence = predicate (term1, ...term n) or
+                    term1= term2
+  term = function(term1, ... term n)
+    or constant or variable
+
+Truth in First-Order logic
+  Sentences are true with respect to a model and an interpretation
+
+  Model contains >= 1 objects (domain elements) and relations among them
+
+  Interpretation specifies referents for
+    Constant symbols -> objects
+    Predicate symbols -> relations
+    Function symbols -> functional relations
+
+An atomic sentence predicate (term1, ...term n) is true
+iff the objects referred to by term1,...term n
+are in the relation referred to by predicate
+
+Models for FOL: Lots!
+  Entailment in propositional logic can be computed by enumerating models
+  We can enumerate the FOL models for a given KB vocabulary
+
+For each number of domain elements n from 1 to infinity
+  For each k-ary predicate Pk in the vocabulary
+    For each possible k-ary relation on n objects
+      For each constant symbol C in the vocabulary
+        For each choice of referent for C from n objects
+
+Universal Quantification
+  All  ∀ (variables) (sentence)
+  \ this symbol is the upside down A looking character
+
+  Important to remember to use the imply symbol not the and symbol
+  This is signified in the importance between
+    "Everyone at Mines in smart."
+            and
+    "Everyone is at Mines and everyone is smart"
+
+Existential Quantification
+    ∃x At(x, Stanford) ^ Smart (x)
+
+    This translates to "Someone at Stanford is smart."
+
+Properties of Quantifiers - Not communicative
+    ∃x ∀y Loves(x, y)
+“There is a person who loves everyone in the world”
+    ∀y ∃x Loves(x, y)
+“Everyone in the world is loved by at least one person”
+
+Equality
+  term1 = term2 is true under a given interpretation iff
+  term1 and term2 refer to the same object
+
+  E.g. ∀ x ×(Sqrt(x),Sqrt(x)) = x are satisfiable
+2=2 is valid
