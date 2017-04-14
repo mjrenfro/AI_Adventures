@@ -1,0 +1,20 @@
+Question1 :
+  Inference with Propositional Logic
+  -----------------------------------
+
+    -Are there inference algorithms for propositional logic that are sound and complete?
+      Definition of soundness:
+        An argument is sound iff
+          The argument is valid
+          All of its premises are true
+
+          All men are mortal
+          Socrates is a man
+          Therefore, Socrates is mortal
+          
+      Definition of Completeness:
+
+
+    -If you answered yes for the above question, what aspects of propositional logic make it
+    possible to have such algorithms? If you answered no, what aspects of propositional logic
+    make it impossible to have such algorithms?
